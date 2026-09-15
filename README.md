@@ -1,18 +1,13 @@
 # 🍭 Quiz Play
 
+![Quiz Play 소개 영상](docs/quiz-play-intro.gif)
+
 주제만 입력하면 AI가 즉석에서 퀴즈를 만들어주는 싱글 플레이 웹 퀴즈 게임입니다.
 문제 은행을 미리 채워둘 필요 없이, 주제 하나만 있으면 게임이 성립합니다.
 
 요구사항 전문은 [PRD.md](./PRD.md)에 정리되어 있습니다.
-
----
-
-## 소개 영상
-
-33초짜리 소개 영상입니다 — **[▶ quiz-play-intro.mp4 (6.4MB)](docs/quiz-play-intro.mp4)**
-
-Remotion으로 만들었고, 소스는 [`video/`](./video) 에 있습니다.
-씬 구성과 수정 방법은 [video/README.md](./video/README.md)를 참고하세요.
+원본 화질로 보려면 **[▶ quiz-play-intro.mp4 (1080p · 6.4MB)](docs/quiz-play-intro.mp4)** 를 받으세요.
+영상은 Remotion으로 만들었고, 소스는 [`video/`](./video) 에 있습니다.
 
 ---
 

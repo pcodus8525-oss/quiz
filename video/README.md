@@ -49,3 +49,28 @@ npm run render   # out/quiz-play-intro.mp4 로 렌더
 - **`cropHeight` 는** `width / 1280 * 900 - offsetY` 를 넘으면 아래가 흰 여백으로 남습니다.
 - **한글 폰트**는 `@remotion/google-fonts/NotoSansKR` 로 로드합니다.
   시스템 폰트에 기대면 렌더 환경에 따라 글자가 깨집니다.
+
+## GIF 만들기
+
+README 상단에 넣는 `docs/quiz-play-intro.gif` 는 mp4를 ffmpeg로 변환한 것입니다.
+Remotion의 `--codec=gif` 로 바로 뽑으면 팔레트 최적화가 없어 36MB가 나오므로,
+반드시 아래 2패스 방식을 씁니다 (6.5MB).
+
+```bash
+FF=node_modules/@remotion/compositor-win32-x64-msvc/ffmpeg.exe
+
+# 1) 영상 전체를 분석해 128색 팔레트를 만든다
+"$FF" -y -i ../docs/quiz-play-intro.mp4 \
+  -vf "scale=800:-1:flags=lanczos,palettegen=max_colors=128:stats_mode=diff" \
+  out/pal.png
+
+# 2) 그 팔레트로 인코딩한다. 8fps로 떨어뜨려 용량을 잡는다
+"$FF" -y -i ../docs/quiz-play-intro.mp4 -i out/pal.png \
+  -lavfi "scale=800:-1:flags=lanczos[x];[x][1:v]paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle" \
+  -r 8 -loop 0 ../docs/quiz-play-intro.gif
+```
+
+- `diff_mode=rectangle` 이 정지한 영역을 다시 쓰게 해서 용량을 크게 줄입니다.
+- `bayer_scale` 을 올릴수록 디더링이 약해지고 파일이 작아집니다.
+- **폭 640px 로 줄이면 4.5MB까지 떨어지지만** 앱 화면 안의 글씨가 뭉개져서 800px로 두었습니다.
+- Remotion 번들 ffmpeg에는 `fps`·`select` 필터가 빠져 있어, 프레임레이트는 `-r` 로 지정해야 합니다.
