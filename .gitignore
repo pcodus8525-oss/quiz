@@ -42,3 +42,6 @@ next-env.d.ts
 
 .vercel
 .env*
+
+# playwright mcp 아티팩트
+.playwright-mcp
