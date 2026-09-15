@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+
+:root {
+  --candy-ink: #2c1a4a;
+  --candy-ink-soft: #6b5b8a;
+  --candy-card: rgba(255, 255, 255, 0.92);
+  --candy-correct: #10b981;
+  --candy-wrong: #f43f5e;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  min-height: 100dvh;
+  color: var(--candy-ink);
+  background:
+    radial-gradient(circle at 12% 8%, #ffd6ef 0%, transparent 45%),
+    radial-gradient(circle at 88% 12%, #cfe4ff 0%, transparent 45%),
+    radial-gradient(circle at 50% 100%, #e6d8ff 0%, transparent 55%),
+    linear-gradient(160deg, #fff6fb 0%, #f2f0ff 55%, #eaf6ff 100%);
+  background-attachment: fixed;
+  font-family: var(--font-geist-sans), "Pretendard", "Apple SD Gothic Neo",
+    "Malgun Gothic", system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+@layer components {
+  .candy-card {
+    background: var(--candy-card);
+    border-radius: 1.75rem;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.9) inset,
+      0 18px 40px -18px rgba(76, 29, 149, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+  }
+
+  .candy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    font-weight: 800;
+    transition:
+      transform 0.12s ease,
+      box-shadow 0.12s ease,
+      filter 0.12s ease;
+  }
+
+  .candy-btn:active:not(:disabled) {
+    transform: translateY(2px) scale(0.99);
+  }
+
+  .candy-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  .candy-btn-primary {
+    color: #fff;
+    background: linear-gradient(135deg, #ff5fa2 0%, #8b5cf6 55%, #38bdf8 100%);
+    box-shadow: 0 12px 24px -10px rgba(139, 92, 246, 0.8);
+  }
+
+  .candy-btn-primary:hover:not(:disabled) {
+    filter: brightness(1.05);
+  }
+
+  .candy-btn-ghost {
+    color: var(--candy-ink);
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid rgba(139, 92, 246, 0.22);
+  }
+
+  .candy-choice {
+    width: 100%;
+    text-align: left;
+    border-radius: 1.25rem;
+    padding: 1rem 1.15rem;
+    font-weight: 700;
+    background: #fff;
+    border: 2px solid rgba(139, 92, 246, 0.18);
+    box-shadow: 0 10px 20px -16px rgba(76, 29, 149, 0.6);
+    transition:
+      transform 0.12s ease,
+      border-color 0.12s ease,
+      background 0.12s ease;
+  }
+
+  .candy-choice:hover:not(:disabled) {
+    border-color: rgba(139, 92, 246, 0.55);
+    transform: translateY(-2px);
+  }
+
+  .candy-choice:disabled {
+    cursor: default;
+  }
+
+  .candy-choice-correct {
+    background: #ecfdf5;
+    border-color: var(--candy-correct);
+    animation: candy-pop 0.4s ease;
+  }
+
+  .candy-choice-wrong {
+    background: #fff1f2;
+    border-color: var(--candy-wrong);
+    animation: candy-shake 0.4s ease;
+  }
+
+  .candy-chip {
+    border-radius: 999px;
+    padding: 0.45rem 0.95rem;
+    font-size: 0.85rem;
+    font-weight: 800;
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid transparent;
+    transition: all 0.12s ease;
+  }
+
+  .candy-chip-active {
+    background: linear-gradient(135deg, #ff5fa2, #8b5cf6);
+    color: #fff;
+    box-shadow: 0 8px 18px -10px rgba(139, 92, 246, 0.9);
+  }
+}
+
+@keyframes candy-pop {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.045); }
+  100% { transform: scale(1); }
+}
+
+@keyframes candy-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-7px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-4px); }
+}
+
+@keyframes candy-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes candy-spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-candy-float { animation: candy-float 2.4s ease-in-out infinite; }
+.animate-candy-spin { animation: candy-spin 1.1s linear infinite; }
