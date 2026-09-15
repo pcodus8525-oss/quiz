@@ -43,6 +43,10 @@ next-env.d.ts
 .vercel
 .env*
 
+# 값이 비어 있는 템플릿이라 이것만 커밋한다.
+# 위 .env* 두 줄보다 뒤에 와야 예외가 먹는다.
+!.env.example
+
 # playwright mcp 아티팩트
 .playwright-mcp
 
