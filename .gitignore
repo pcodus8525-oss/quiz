@@ -45,3 +45,7 @@ next-env.d.ts
 
 # playwright mcp 아티팩트
 .playwright-mcp
+
+# remotion 영상 프로젝트 (최종 mp4는 docs/ 에 커밋한다)
+video/node_modules
+video/out

@@ -1,0 +1,26 @@
+{
+  "name": "quiz-play-video",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Quiz Play 소개 영상 (Remotion)",
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render QuizPlayIntro out/quiz-play-intro.mp4",
+    "upgrade": "remotion upgrade"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.524",
+    "@remotion/google-fonts": "4.0.524",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "remotion": "4.0.524"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "^5.9.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true
+  }
+}

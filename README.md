@@ -7,6 +7,15 @@
 
 ---
 
+## 소개 영상
+
+33초짜리 소개 영상입니다 — **[▶ quiz-play-intro.mp4 (6.4MB)](docs/quiz-play-intro.mp4)**
+
+Remotion으로 만들었고, 소스는 [`video/`](./video) 에 있습니다.
+씬 구성과 수정 방법은 [video/README.md](./video/README.md)를 참고하세요.
+
+---
+
 ## 화면
 
 ### 홈 — 주제 · 난이도 · 문항 수 선택
